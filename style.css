@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(69, 68, 68);
+}
+
+h1 {
+    font-size: 5rem; /* Large text */
+    font-weight: 700; /* Bold text */
+    background: linear-gradient(90deg, #808080, #ffffff, #000000); /* Gray to white to black gradient */
+    -webkit-background-clip: text; /* Clips the background to the text (for Chrome, Safari) */
+    -webkit-text-fill-color: transparent; /* Makes text transparent so gradient shows through */
+    background-clip: text; /* Standard background clip */
+    text-align: center; /* Ensures text is centered */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for extra impact */
+}
+
+div{
+    display: flex;
+    height: 86vh;
+    justify-content: center;
+    align-items: center;
+}
+
