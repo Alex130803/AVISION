@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Tour | AVISION360</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/tour.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="minimal-navbar">
+  <a href="index.html" class="nav-btn">Home</a>
+  <a href="#blog" class="nav-btn">Blog</a>
+  <a href="tour.html" class="nav-btn">360</a>
+</nav>
+
+<!-- SLIDES (vidljivo na početku) -->
+<div class="slider-container" id="slideView">
+  <section class="slide" style="background-image: url('media/royal.jpg');">
+    <div class="slide-blur">
+      <h1>Hotel Royal Dubrovnik</h1>
+      <p>Virtualna tura kroz hotel i predsjednički apartman.</p>
+      <button onclick="openModal()">Explore</button>
+    </div>
+  </section>
+
+  <section class="slide" style="background-image: url('media/restoran_du.jpg');">
+    <div class="slide-blur">
+      <h1>Restaurant Dubrovnik</h1>
+      <p>Ambijent restorana u virtuelnoj turi.</p>
+      <button disabled>Coming Soon</button>
+    </div>
+  </section>
+
+  <section class="slide" style="background-image: url('media/portonovi.jpg');">
+    <div class="slide-blur">
+      <h1>Porto Novi</h1>
+      <p>Istraži luksuzno naselje u 360°.</p>
+      <button disabled>Coming Soon</button>
+    </div>
+  </section>
+</div>
+
+<!-- INFO SECTION (skrivena na početku) -->
+<div class="info-section" id="infoView">
+  <div class="info-box">
+    <h2>O Virtualnim Turama</h2>
+    <p>AVISION360 nudi potpuno interaktivne ture hotela, restorana i luksuznih destinacija.</p>
+    <p>Svaka tura je pažljivo kreirana da pruži autentično korisničko iskustvo. Još više uskoro!</p>
+  </div>
+</div>
+
+<!-- CIRCLES -->
+<div class="circle-nav" id="circles">
+  <div class="circle" data-slide="0" title="Hotel Royal Dubrovnik"></div>
+  <div class="circle" data-slide="1" title="Restaurant Dubrovnik"></div>
+  <div class="circle" data-slide="2" title="Porto Novi"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="tourModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <iframe src="http://116.203.57.22/aleksa/tour/" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- SWITCH VIEW BUTTON -->
+<div class="switch-container">
+  <button class="switch-btn" id="switchBtn">
+    <i class="fa-solid fa-rotate"></i> Switch View
+  </button>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  function openModal() {
+    document.getElementById('tourModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('tourModal').style.display = 'none';
+  }
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.querySelectorAll('.circle').forEach(circle => {
+    circle.addEventListener('click', function() {
+      const slideIndex = parseInt(this.dataset.slide);
+      const slides = document.querySelectorAll('.slide');
+      if (slides[slideIndex]) {
+        slides[slideIndex].scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // SWITCH VIEW LOGIC
+  const switchBtn = document.getElementById("switchBtn");
+  const slideView = document.getElementById("slideView");
+  const infoView = document.getElementById("infoView");
+  const circles = document.getElementById("circles");
+
+  let isInfo = false;
+
+  switchBtn.addEventListener("click", () => {
+    isInfo = !isInfo;
+
+    if (isInfo) {
+      slideView.style.display = "none";
+      circles.style.display = "none";
+      infoView.style.display = "flex";
+      switchBtn.innerHTML = '<i class="fas fa-rotate"></i> Back';
+    } else {
+      slideView.style.display = "block";
+      circles.style.display = "flex";
+      infoView.style.display = "none";
+      switchBtn.innerHTML = '<i class="fas fa-rotate"></i> Switch View';
+    }
+  });
+</script>
+
+</body>
+</html>
