@@ -17,7 +17,7 @@
   <a href="tour.html" class="nav-btn">360</a>
 </nav>
 
-<!-- SLIDES (vidljivo na početku) -->
+<!-- SLIDES -->
 <div class="slider-container" id="slideView">
   <section class="slide" style="background-image: url('media/royal.jpg');">
     <div class="slide-blur">
@@ -31,7 +31,7 @@
     <div class="slide-blur">
       <h1>Restaurant Dubrovnik</h1>
       <p>Ambijent restorana u virtuelnoj turi.</p>
-      <button disabled>Coming Soon</button>
+      <button onclick="openRestaurantModal()">Explore</button>
     </div>
   </section>
 
@@ -44,7 +44,7 @@
   </section>
 </div>
 
-<!-- INFO SECTION (skrivena na početku) -->
+<!-- INFO SECTION -->
 <div class="info-section" id="infoView">
   <div class="info-box">
     <h2>O Virtualnim Turama</h2>
@@ -60,11 +60,19 @@
   <div class="circle" data-slide="2" title="Porto Novi"></div>
 </div>
 
-<!-- MODAL -->
+<!-- ROYAL MODAL -->
 <div class="modal" id="tourModal">
   <div class="modal-content">
     <span class="close-modal" onclick="closeModal()">&times;</span>
     <iframe src="http://116.203.57.22/aleksa/tour/" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- RESTAURANT MODAL -->
+<div class="modal" id="restaurantModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeRestaurantModal()">&times;</span>
+    <iframe src="http://116.203.57.22/aleksa/Restoran%20Dubrovnik/" allowfullscreen></iframe>
   </div>
 </div>
 
@@ -85,8 +93,19 @@
     document.getElementById('tourModal').style.display = 'none';
   }
 
+  function openRestaurantModal() {
+    document.getElementById('restaurantModal').style.display = 'flex';
+  }
+
+  function closeRestaurantModal() {
+    document.getElementById('restaurantModal').style.display = 'none';
+  }
+
   window.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      closeModal();
+      closeRestaurantModal();
+    }
   });
 
   document.querySelectorAll('.circle').forEach(circle => {
@@ -99,7 +118,6 @@
     });
   });
 
-  // SWITCH VIEW LOGIC
   const switchBtn = document.getElementById("switchBtn");
   const slideView = document.getElementById("slideView");
   const infoView = document.getElementById("infoView");
