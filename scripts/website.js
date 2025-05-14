@@ -29,6 +29,8 @@ const slider = document.getElementById('portfolio-scroll');
     slider.scrollLeft = scrollLeft - walk;
   });
 
+  
+
 //Prozor u slideru
 
 const projectData = {
@@ -84,3 +86,67 @@ modal.style.display = "none";
 });
 
 //white black mode
+
+
+
+
+
+
+
+
+
+
+
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll('.package-card');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target); // animira samo jednom
+        }
+      });
+    }, {
+      threshold: 0.2 // kada 20% elementa uđe u viewport
+    });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  });
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const features = document.querySelectorAll('.feature');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // animira samo jednom
+        }
+      });
+    }, {
+      threshold: 0.2 // 20% vidljivosti pokreće animaciju
+    });
+
+    features.forEach(feature => {
+      observer.observe(feature);
+    });
+  });
+

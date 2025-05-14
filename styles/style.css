@@ -10,7 +10,19 @@ body {
 }
 
 .avision_slogan{
-    text-align: center;
+     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2.5); /* veći tekst */
+    font-size: 3rem;
+    opacity: 0;
+    transition: all 1.5s ease-in-out;
+    z-index: 2;
+}
+.avision_slogan.slogan-final {
+    top: 20px;
+    transform: translateX(-50%) scale(1); /* normalna veličina */
+    opacity: 1;
 }
 
 /* Vanta.js Background */
@@ -54,6 +66,8 @@ body {
     position: absolute;
     width: 300px;
     height: auto;
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out 1.5s;
 }
 
 #logo-part2 {
@@ -62,6 +76,12 @@ body {
 
 #logo-part1 {
     transform: translate(-25px, -60px) !important;
+}
+
+
+
+.logo-visible {
+    opacity: 1;
 }
 
 /* Navbar - Transparent with Blur */
@@ -119,4 +139,97 @@ body {
 }
 
 
-  
+
+
+
+
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #4474BA;
+}
+
+
+
+
+
+
+
+
+
+
+/* Laptopi i veliki tableti (1024px – 1439px) */
+@media (max-width: 1439px) {
+    .avision_slogan {
+        font-size: 2.5rem;
+        transform: translate(-50%, -50%) scale(2);
+    }
+
+    .avision_slogan.slogan-final {
+        top: 20px;
+        transform: translateX(-50%) scale(1);
+    }
+
+    
+}
+
+/* Tableti (768px – 1023px) */
+@media (max-width: 1023px) {
+    .avision_slogan {
+        font-size: 2rem;
+        transform: translate(-50%, -50%) scale(1.7);
+    }
+
+    .avision_slogan.slogan-final {
+        top: 20px;
+        transform: translateX(-50%) scale(1);
+    }
+
+    #logo-part1,
+    #logo-part2 {
+        width: 200px;
+    }
+}
+
+/* Mobiteli (manje od 768px) */
+@media (max-width: 767px) {
+    .avision_slogan {
+        font-size: 1.5rem;
+        transform: translate(-50%, -50%) scale(1.5);
+        text-align: center;
+        width: 90%;
+    }
+
+    .avision_slogan.slogan-final {
+        top: 30px;
+        transform: translateX(-50%) scale(1);
+    }
+
+    #logo-part1,
+    #logo-part2 {
+        right: 46px;
+    }
+
+    #logo-part1 {
+        transform: translate(-15px, -30px) !important; /* prilagođeni razmak */
+    }
+
+    #logo-part2 {
+        transform: translate(-15px, -10px) !important;
+    }
+}

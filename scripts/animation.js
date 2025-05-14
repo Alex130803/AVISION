@@ -50,3 +50,41 @@ navItems.forEach((item) => {
         gsap.to(logo, { x: 0, y: 0, scale: 1, duration: 0.4, ease: "power3.out" });
     });
 });
+
+
+
+
+
+
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    const slogan = document.querySelector(".avision_slogan");
+    const logo1 = document.getElementById("logo-part1");
+    const logo2 = document.getElementById("logo-part2");
+
+    // 1. Prvo se pojavljuje samo veliki tekst
+    setTimeout(() => {
+        slogan.style.opacity = "1";
+        logo.style.opacity = "0";
+    }, 100);
+
+    // 2. Nakon 2 sekunde tekst se pomakne i smanji
+    setTimeout(() => {
+        slogan.classList.add("slogan-final");
+    }, 2000);
+
+    setTimeout(() => {
+        logo.style.opacity = "1";
+    }, 3000);
+
+    // 3. Logo fade-in krene lagano odmah nakon što se tekst krene pomicati
+    setTimeout(() => {
+        logo1.classList.add("logo-visible");
+        logo2.classList.add("logo-visible");
+    }, 2100);
+});
+
+
+
